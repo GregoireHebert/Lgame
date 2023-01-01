@@ -26,14 +26,11 @@ public class Tile : MonoBehaviour
 
     private void tryMoveCoin() {
         // turn to move a coin
-        if(
-            GameManager.Instance.State != GameState.PlayerOneMoveCoin &&
-            GameManager.Instance.State != GameState.PlayerTwoMoveCoin
-        ) {
+        if(GameState.PlayerOneMoveCoin != GameManager.Instance.State && GameState.PlayerTwoMoveCoin != GameManager.Instance.State) {
             return;
         }
 
-        // tile is occupied by a coin, select it.
+        // clicked on a tile occupied by a coin, select it.
         if (OccupiedUnit != null && OccupiedUnit.Side == Side.Neutral) {
             UnitManager.Instance.SetSelectedUnit((BaseNeutral)OccupiedUnit);
             return;
@@ -47,6 +44,7 @@ public class Tile : MonoBehaviour
             SetUnit(UnitManager.Instance.SelectedUnit);
             UnitManager.Instance.SetSelectedUnit(null);
             
+            // move to next game state
             if (GameManager.Instance.State == GameState.PlayerOneMoveCoin) {
                 GameManager.Instance.ChangeState(GameState.PlayerTwoMoveShape);
             } else {
@@ -59,21 +57,23 @@ public class Tile : MonoBehaviour
 
     private void tryMoveShape() {
         // turn to move a shape
-        if(
-            GameManager.Instance.State != GameState.PlayerOneMoveShape &&
-            GameManager.Instance.State != GameState.PlayerTwoMoveShape
-        ) {
+        UnityEngine.Debug.Log(GameManager.Instance.State);
+        UnityEngine.Debug.Log(GameManager.Instance.State);
+        if(GameState.PlayerOneMoveShape != GameManager.Instance.State && GameState.PlayerTwoMoveShape != GameManager.Instance.State) {
             return;
         }
 
         if (
+            // clicked on an empty cell, or if clicked on selected unit tile allow it if the shape changed its position
             (OccupiedUnit == null || (OccupiedUnit == UnitManager.Instance.SelectedUnit && UnitManager.Instance.SelectedUnit.getTilesValue() != UnitManager.Instance.SelectedUnit.calculateTilesValue(position))) && 
+            // then check if the selected position and tile is compatible
             false == UnitManager.Instance.unitWouldOverflow(UnitManager.Instance.SelectedUnit, position) &&
             false == UnitManager.Instance.unitWouldOverlap(UnitManager.Instance.SelectedUnit, position)
         ) {
             SetUnit(UnitManager.Instance.SelectedUnit);
             UnitManager.Instance.SetSelectedUnit(null);
             
+            // move to next game state
             if (GameManager.Instance.State == GameState.PlayerOneMoveShape) {
                 GameManager.Instance.ChangeState(GameState.PlayerOneMoveCoin);
             } else {

@@ -6,9 +6,8 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class UnitManager : MonoBehaviour
+public class UnitManager : Singleton<UnitManager>
 {
-    public static UnitManager Instance;
     public List<ScriptableUnit> _units;
 
     public BaseUnit SelectedUnit;
@@ -19,8 +18,8 @@ public class UnitManager : MonoBehaviour
     public BaseNeutral CoinOneUnit;
     public BaseNeutral CoinTwoUnit;
 
-    void Awake() {
-        Instance = this;
+    protected override void Awake() {
+        base.Awake();
 
         _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
     }

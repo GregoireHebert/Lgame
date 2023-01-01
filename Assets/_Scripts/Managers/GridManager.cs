@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager : Singleton<GridManager>
 {
-    public static GridManager Instance;
-
     [SerializeField] private int _width = 4, _height = 4;
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private Tile _lightTilePrefab;
@@ -15,10 +13,6 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform _cam;
     
     private Dictionary<UnityEngine.Vector2, Tile> _tiles;
-
-    private void Awake() {
-        Instance = this;
-    }
     
     public void GenerateGrid() {
         int square = 0;
