@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 5359254121008852}
   _highlight: {fileID: 1923553491712989700}
+  clip: {fileID: 8300000, guid: 51e021eaf9f99426fada31d8675452d7, type: 3}
   OccupiedUnit: {fileID: 0}
   value: 0
   position: 0

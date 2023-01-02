@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
+    [SerializeField] private AudioClip clip;
 
     public BaseUnit OccupiedUnit;
     public int value;
@@ -42,6 +43,7 @@ public class Tile : MonoBehaviour
             false == UnitManager.Instance.unitWouldOverlap(UnitManager.Instance.SelectedUnit, position)
         ) {
             SetUnit(UnitManager.Instance.SelectedUnit);
+            SoundManager.Instance.playSound(clip);
             UnitManager.Instance.SetSelectedUnit(null);
             
             // move to next game state
@@ -71,6 +73,7 @@ public class Tile : MonoBehaviour
             false == UnitManager.Instance.unitWouldOverlap(UnitManager.Instance.SelectedUnit, position)
         ) {
             SetUnit(UnitManager.Instance.SelectedUnit);
+            SoundManager.Instance.playSound(clip);
             UnitManager.Instance.SetSelectedUnit(null);
             
             // move to next game state
