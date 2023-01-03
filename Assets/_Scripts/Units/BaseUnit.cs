@@ -26,25 +26,30 @@ public class BaseUnit : MonoBehaviour
         tilesValue = calculateTilesValue(position);
     }
 
-    public virtual int getAllowedSquares() {
+    public virtual int GetAllowedSquares()
+    {
         return 0; // actually not needed here;
     }
 
-    public virtual void rotateRight() {
+    public virtual void rotateRight()
+    {
         // do nothing
     }
 
-    public virtual void rotateLeft() {
+    public virtual void rotateLeft()
+    {
         // do nothing
     }
 
-    public virtual void toggleMirror() {
+    public virtual void toggleMirror()
+    {
         mirror = !mirror;
     }
 }
 
 // A rotation represent a number of degrees to the right
-public enum Rotation {
+public enum Rotation
+{
     zero = 0,
     quarter = 90,
     half = 180,

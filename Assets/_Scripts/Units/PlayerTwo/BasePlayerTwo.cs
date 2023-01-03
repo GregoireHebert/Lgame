@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BasePlayerTwo : BasePlayer
 {
-     public BasePlayerTwo() {
+    public BasePlayerTwo()
+    {
         rotation = Rotation.half;
     }
 }

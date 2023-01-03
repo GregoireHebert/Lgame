@@ -15,14 +15,16 @@ public class MenuManager : Singleton<MenuManager>
     private Animator RotateRightAnimator;
     private Animator MirrorAnimator;
 
-    public void Start() {
+    public void Start()
+    {
         ForwardAnimator = Forward.GetComponent<Animator>();
         RotateLeftAnimator = RotateLeft.GetComponent<Animator>();
         RotateRightAnimator = RotateRight.GetComponent<Animator>();
         MirrorAnimator = Mirror.GetComponent<Animator>();
     }
 
-    public void toggleShapeButtons() {
+    public void toggleShapeButtons()
+    {
         ForwardAnimator.ResetTrigger("show");
         ForwardAnimator.SetTrigger("hide");
 
@@ -31,7 +33,8 @@ public class MenuManager : Singleton<MenuManager>
         MirrorAnimator.SetTrigger("show");
     }
 
-    public void toggleForwardButton() {
+    public void toggleForwardButton()
+    {
         ForwardAnimator.ResetTrigger("hide");
         ForwardAnimator.SetTrigger("show");
 

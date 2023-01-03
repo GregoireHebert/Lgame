@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class Dialog: MonoBehaviour
+public class Dialog : MonoBehaviour
 {
     [SerializeField] private GameObject DialogCanvas;
-    
-    public void open() {
+
+    public void open()
+    {
         DialogCanvas.SetActive(true);
-    }   
-    
-    public void close() {
+    }
+
+    public void close()
+    {
         DialogCanvas.SetActive(false);
-    }   
+    }
 }

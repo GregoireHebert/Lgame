@@ -5,11 +5,13 @@ public class EndGameChecker
 {
     List<GamePosition> TruthTable = new List<GamePosition>();
 
-    public bool isGameOver(GamePosition gamePosition) {
+    public bool isGameOver(GamePosition gamePosition)
+    {
         return TruthTable.Contains(gamePosition);
     }
 
-    public EndGameChecker() {
+    public EndGameChecker()
+    {
         // https://en.wikipedia.org/wiki/L_game#/media/File:L_Game_all_final_positions.svg
         // + each rotation and mirror
         // in these positions, the p1 just played and wins

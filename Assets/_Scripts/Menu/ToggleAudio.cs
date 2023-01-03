@@ -5,10 +5,11 @@ using UnityEngine;
 public class ToggleAudio : MonoBehaviour
 {
     [SerializeField] private bool toggleEffects;
-    
+
     public void toggle()
     {
-        if (toggleEffects) {
+        if (toggleEffects)
+        {
             SoundManager.Instance.toggleEffects();
         }
     }

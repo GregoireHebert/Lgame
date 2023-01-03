@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class BasePlayerOne : BasePlayer
 {
-    public BasePlayerOne() {
+    public BasePlayerOne()
+    {
         rotation = Rotation.zero;
     }
 }

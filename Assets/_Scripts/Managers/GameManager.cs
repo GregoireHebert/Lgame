@@ -9,14 +9,17 @@ public class GameManager : Singleton<GameManager>
 
     private EndGameChecker EndGameChecker;
 
-    void Start() {
+    void Start()
+    {
         EndGameChecker = new EndGameChecker();
 
         ChangeState(GameState.GenerateGrid);
     }
 
-    public void ChangeState(GameState newState) {
-        if (State == newState) {
+    public void ChangeState(GameState newState)
+    {
+        if (State == newState)
+        {
             return;
         }
 
@@ -31,7 +34,8 @@ public class GameManager : Singleton<GameManager>
                 break;
             case GameState.PlayerOneMoveShape:
                 UnityEngine.Debug.Log(EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()));
-                if (EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition())) {
+                if (EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()))
+                {
                     LevelManager.Instance.LoadScene("HomeScreen");
                 }
 
@@ -44,7 +48,8 @@ public class GameManager : Singleton<GameManager>
                 break;
             case GameState.PlayerTwoMoveShape:
                 UnityEngine.Debug.Log(EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()));
-                if (EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition())) {
+                if (EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()))
+                {
                     LevelManager.Instance.LoadScene("HomeScreen");
                 }
 
@@ -63,7 +68,8 @@ public class GameManager : Singleton<GameManager>
     }
 }
 
-public enum GameState {
+public enum GameState
+{
     init = -1,
     GenerateGrid = 0,
     SpawnPieces = 1,
@@ -77,5 +83,5 @@ public enum GameState {
 [Serializable]
 class InvalidStateException : Exception
 {
-    public InvalidStateException() : base("Invalid game state") {  }
+    public InvalidStateException() : base("Invalid game state") { }
 }

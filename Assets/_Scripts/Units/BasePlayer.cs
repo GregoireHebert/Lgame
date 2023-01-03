@@ -5,53 +5,59 @@ using UnityEngine;
 
 public class BasePlayer : BaseUnit
 {
-    public override int getAllowedSquares() {
-        switch (rotation) {
+    public override int GetAllowedSquares()
+    {
+        switch (rotation)
+        {
             case Rotation.zero:
-                return mirror == false ? 
+                return mirror == false ?
                     (1 << 1) | (1 << 2) | (1 << 3) | (1 << 5) | (1 << 6) | (1 << 7) :
                     (1 << 0) | (1 << 1) | (1 << 2) | (1 << 4) | (1 << 5) | (1 << 6);
             case Rotation.quarter:
-                return mirror == false ? 
+                return mirror == false ?
                     (1 << 6) | (1 << 7) | (1 << 10) | (1 << 11) | (1 << 14) | (1 << 15) :
                     (1 << 2) | (1 << 3) | (1 << 6) | (1 << 7) | (1 << 10) | (1 << 11);
             case Rotation.half:
-                return mirror == false ? 
+                return mirror == false ?
                     (1 << 8) | (1 << 9) | (1 << 10) | (1 << 12) | (1 << 13) | (1 << 14) :
                     (1 << 9) | (1 << 10) | (1 << 11) | (1 << 13) | (1 << 14) | (1 << 15);
             case Rotation.threeQuarter:
-                return mirror == false ? 
+                return mirror == false ?
                     (1 << 0) | (1 << 1) | (1 << 4) | (1 << 5) | (1 << 8) | (1 << 9) :
                     (1 << 4) | (1 << 5) | (1 << 8) | (1 << 9) | (1 << 12) | (1 << 13);
             default: return 0;
         }
     }
 
-    public override int calculateTilesValue(int position) {
-        switch (rotation) {
-            case Rotation.zero: 
+    public override int calculateTilesValue(int position)
+    {
+        switch (rotation)
+        {
+            case Rotation.zero:
                 return mirror == false ?
-                        (1 << position) | (1 << (position-1)) | (1 << (position+4)) | (1 << (position+8)) :
-                        (1 << position) | (1 << (position+1)) | (1 << (position+4)) | (1 << (position+8));
-            case Rotation.quarter: 
+                        (1 << position) | (1 << (position - 1)) | (1 << (position + 4)) | (1 << (position + 8)) :
+                        (1 << position) | (1 << (position + 1)) | (1 << (position + 4)) | (1 << (position + 8));
+            case Rotation.quarter:
                 return mirror == false ?
-                        (1 << position) | (1 << (position-1)) | (1 << (position-2)) | (1 << (position-4)) :
-                        (1 << position) | (1 << (position-1)) | (1 << (position-2)) | (1 << (position+4));
-            case Rotation.half: 
+                        (1 << position) | (1 << (position - 1)) | (1 << (position - 2)) | (1 << (position - 4)) :
+                        (1 << position) | (1 << (position - 1)) | (1 << (position - 2)) | (1 << (position + 4));
+            case Rotation.half:
                 return mirror == false ?
-                        (1 << position) | (1 << (position+1)) | (1 << (position-4)) | (1 << (position-8)) :
-                        (1 << position) | (1 << (position-1)) | (1 << (position-4)) | (1 << (position-8));
-            case Rotation.threeQuarter: 
+                        (1 << position) | (1 << (position + 1)) | (1 << (position - 4)) | (1 << (position - 8)) :
+                        (1 << position) | (1 << (position - 1)) | (1 << (position - 4)) | (1 << (position - 8));
+            case Rotation.threeQuarter:
                 return mirror == false ?
-                        (1 << position) | (1 << (position+1)) | (1 << (position+2)) | (1 << (position+4)) :
-                        (1 << position) | (1 << (position+1)) | (1 << (position+2)) | (1 << (position-4));    
+                        (1 << position) | (1 << (position + 1)) | (1 << (position + 2)) | (1 << (position + 4)) :
+                        (1 << position) | (1 << (position + 1)) | (1 << (position + 2)) | (1 << (position - 4));
             default:
                 return 1 << position;
         }
     }
 
-    public override void rotateRight() {
-        switch (rotation) {
+    public override void rotateRight()
+    {
+        switch (rotation)
+        {
             case Rotation.zero:
                 rotation = Rotation.quarter;
                 break;
@@ -64,7 +70,7 @@ public class BasePlayer : BaseUnit
             case Rotation.threeQuarter:
                 rotation = Rotation.zero;
                 break;
-            default: 
+            default:
                 rotation = Rotation.zero;
                 break;
         }
@@ -73,8 +79,10 @@ public class BasePlayer : BaseUnit
         transform.Rotate(rotationToAdd);
     }
 
-    public override void rotateLeft() {
-        switch (rotation) {
+    public override void rotateLeft()
+    {
+        switch (rotation)
+        {
             case Rotation.zero:
                 rotation = Rotation.threeQuarter;
                 break;
@@ -87,7 +95,7 @@ public class BasePlayer : BaseUnit
             case Rotation.quarter:
                 rotation = Rotation.zero;
                 break;
-            default: 
+            default:
                 rotation = Rotation.zero;
                 break;
         }
@@ -96,8 +104,9 @@ public class BasePlayer : BaseUnit
         transform.Rotate(rotationToAdd);
     }
 
-    public override void toggleMirror() {
+    public override void toggleMirror()
+    {
         mirror = !mirror;
-        transform.localScale = new Vector3(transform.localScale.x*-1,transform.localScale.y,transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
