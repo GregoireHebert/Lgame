@@ -1,17 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
     public GameState State;
 
-    private EndGameChecker EndGameChecker;
+    private EndGameChecker _endGameChecker;
 
     void Start()
     {
-        EndGameChecker = new EndGameChecker();
+        _endGameChecker = new EndGameChecker();
 
         ChangeState(GameState.GenerateGrid);
     }
@@ -33,32 +30,32 @@ public class GameManager : Singleton<GameManager>
                 UnitManager.Instance.SpawnUnits();
                 break;
             case GameState.PlayerOneMoveShape:
-                UnityEngine.Debug.Log(EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()));
-                if (EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()))
+                UnityEngine.Debug.Log(_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()));
+                if (_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()))
                 {
                     LevelManager.Instance.LoadScene("HomeScreen");
                 }
 
                 UnitManager.Instance.SelectPlayerOneUnit();
-                MenuManager.Instance.toggleShapeButtons();
+                MenuManager.Instance.ToggleShapeButtons();
                 break;
             case GameState.PlayerOneMoveCoin:
                 UnitManager.Instance.SetSelectedUnit(null);
-                MenuManager.Instance.toggleForwardButton();
+                MenuManager.Instance.ToggleForwardButton();
                 break;
             case GameState.PlayerTwoMoveShape:
-                UnityEngine.Debug.Log(EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()));
-                if (EndGameChecker.isGameOver(UnitManager.Instance.getGamePosition()))
+                UnityEngine.Debug.Log(_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()));
+                if (_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()))
                 {
                     LevelManager.Instance.LoadScene("HomeScreen");
                 }
 
                 UnitManager.Instance.SelectPlayerTwoUnit();
-                MenuManager.Instance.toggleShapeButtons();
+                MenuManager.Instance.ToggleShapeButtons();
                 break;
             case GameState.PlayerTwoMoveCoin:
                 UnitManager.Instance.SetSelectedUnit(null);
-                MenuManager.Instance.toggleForwardButton();
+                MenuManager.Instance.ToggleForwardButton();
                 break;
             case GameState.GameEnded:
                 break;
@@ -70,7 +67,7 @@ public class GameManager : Singleton<GameManager>
 
 public enum GameState
 {
-    init = -1,
+    Init = -1,
     GenerateGrid = 0,
     SpawnPieces = 1,
     PlayerOneMoveShape = 2,

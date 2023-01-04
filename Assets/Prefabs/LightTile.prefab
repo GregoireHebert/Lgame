@@ -101,10 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 5359254121008852}
   _highlight: {fileID: 1923553491712989700}
-  clip: {fileID: 8300000, guid: 51e021eaf9f99426fada31d8675452d7, type: 3}
-  OccupiedUnit: {fileID: 0}
-  value: 0
-  position: 0
+  _clip: {fileID: 8300000, guid: 51e021eaf9f99426fada31d8675452d7, type: 3}
+  _occupiedUnit: {fileID: 0}
+  Value: 0
+  Position: 0
 --- !u!61 &6509434326655428453
 BoxCollider2D:
   m_ObjectHideFlags: 0

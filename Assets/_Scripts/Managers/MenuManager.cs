@@ -5,42 +5,42 @@ using UnityEngine;
 
 public class MenuManager : Singleton<MenuManager>
 {
-    public GameObject Forward;
-    public GameObject RotateLeft;
-    public GameObject RotateRight;
-    public GameObject Mirror;
+    [SerializeField] private GameObject _forward;
+    [SerializeField] private GameObject _rotateLeft;
+    [SerializeField] private GameObject _rotateRight;
+    [SerializeField] private GameObject _mirror;
 
-    private Animator ForwardAnimator;
-    private Animator RotateLeftAnimator;
-    private Animator RotateRightAnimator;
-    private Animator MirrorAnimator;
+    private Animator _forwardAnimator;
+    private Animator _rotateLeftAnimator;
+    private Animator _rotateRightAnimator;
+    private Animator _mirrorAnimator;
 
     public void Start()
     {
-        ForwardAnimator = Forward.GetComponent<Animator>();
-        RotateLeftAnimator = RotateLeft.GetComponent<Animator>();
-        RotateRightAnimator = RotateRight.GetComponent<Animator>();
-        MirrorAnimator = Mirror.GetComponent<Animator>();
+        _forwardAnimator = _forward.GetComponent<Animator>();
+        _rotateLeftAnimator = _rotateLeft.GetComponent<Animator>();
+        _rotateRightAnimator = _rotateRight.GetComponent<Animator>();
+        _mirrorAnimator = _mirror.GetComponent<Animator>();
     }
 
-    public void toggleShapeButtons()
+    public void ToggleShapeButtons()
     {
-        ForwardAnimator.ResetTrigger("show");
-        ForwardAnimator.SetTrigger("hide");
+        _forwardAnimator.ResetTrigger("show");
+        _forwardAnimator.SetTrigger("hide");
 
-        RotateLeftAnimator.SetTrigger("show");
-        RotateRightAnimator.SetTrigger("show");
-        MirrorAnimator.SetTrigger("show");
+        _rotateLeftAnimator.SetTrigger("show");
+        _rotateRightAnimator.SetTrigger("show");
+        _mirrorAnimator.SetTrigger("show");
     }
 
-    public void toggleForwardButton()
+    public void ToggleForwardButton()
     {
-        ForwardAnimator.ResetTrigger("hide");
-        ForwardAnimator.SetTrigger("show");
+        _forwardAnimator.ResetTrigger("hide");
+        _forwardAnimator.SetTrigger("show");
 
-        RotateLeftAnimator.SetTrigger("hide");
-        RotateRightAnimator.SetTrigger("hide");
-        MirrorAnimator.SetTrigger("hide");
+        _rotateLeftAnimator.SetTrigger("hide");
+        _rotateRightAnimator.SetTrigger("hide");
+        _mirrorAnimator.SetTrigger("hide");
     }
 }
 

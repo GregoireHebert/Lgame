@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +5,6 @@ using UnityEngine;
 public class GridManager : Singleton<GridManager>
 {
     [SerializeField] private int _width = 4, _height = 4;
-    [SerializeField] private Tile _tilePrefab;
     [SerializeField] private Tile _lightTilePrefab;
     [SerializeField] private Tile _darkTilePrefab;
     [SerializeField] private Transform _cam;
@@ -28,8 +25,8 @@ public class GridManager : Singleton<GridManager>
 
                 var spawnedTile = Instantiate(prefab, new UnityEngine.Vector3(x, y), UnityEngine.Quaternion.identity);
                 spawnedTile.name = $"Tile {1 << square}";
-                spawnedTile.value = 1 << square;
-                spawnedTile.position = square;
+                spawnedTile.Value = 1 << square;
+                spawnedTile.Position = square;
 
                 _tiles[new UnityEngine.Vector2(x, y)] = spawnedTile;
 
@@ -42,7 +39,7 @@ public class GridManager : Singleton<GridManager>
         GameManager.Instance.ChangeState(GameState.SpawnPieces);
     }
 
-    public Tile getTileAtPosition(UnityEngine.Vector2 position)
+    public Tile GetTileAtPosition(UnityEngine.Vector2 position)
     {
         if (_tiles.TryGetValue(position, out var tile))
         {
@@ -54,21 +51,21 @@ public class GridManager : Singleton<GridManager>
 
     public Tile GetCoinOneSpawnTile()
     {
-        return _tiles.Where(t => t.Value.value == 1 << 0).First().Value;
+        return _tiles.Where(t => t.Value.Value == 1 << 0).First().Value;
     }
 
     public Tile GetCoinTwoSpawnTile()
     {
-        return _tiles.Where(t => t.Value.value == 1 << 15).First().Value;
+        return _tiles.Where(t => t.Value.Value == 1 << 15).First().Value;
     }
 
     public Tile GetPlayerOneSpawnTile()
     {
-        return _tiles.Where(t => t.Value.value == 1 << 2).First().Value;
+        return _tiles.Where(t => t.Value.Value == 1 << 2).First().Value;
     }
 
     public Tile GetPlayerTwoSpawnTile()
     {
-        return _tiles.Where(t => t.Value.value == 1 << 13).First().Value;
+        return _tiles.Where(t => t.Value.Value == 1 << 13).First().Value;
     }
 }

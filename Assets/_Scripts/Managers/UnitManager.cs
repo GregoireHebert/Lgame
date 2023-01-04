@@ -8,13 +8,10 @@ using UnityEngine;
 
 public class UnitManager : Singleton<UnitManager>
 {
-    public List<ScriptableUnit> _units;
-
+    private List<ScriptableUnit> _units;
     public BaseUnit SelectedUnit;
-
     public BasePlayerOne PlayerOneUnit;
     public BasePlayerTwo PlayerTwoUnit;
-
     public BaseNeutral CoinOneUnit;
     public BaseNeutral CoinTwoUnit;
 
@@ -83,29 +80,29 @@ public class UnitManager : Singleton<UnitManager>
         SelectedUnit = PlayerTwoUnit;
     }
 
-    public bool unitWouldOverlap(BaseUnit unit, int position)
+    public bool UnitWouldOverlap(BaseUnit unit, int position)
     {
-        int valueToCheck = unit.calculateTilesValue(position);
+        int valueToCheck = unit.CalculateTilesValue(position);
 
-        if (unit != CoinOneUnit && (CoinOneUnit.getTilesValue() & valueToCheck) != 0)
+        if (unit != CoinOneUnit && (CoinOneUnit.GetTilesValue() & valueToCheck) != 0)
         {
             UnityEngine.Debug.Log("overlap coin one");
             return true;
         }
 
-        if (unit != CoinTwoUnit && (CoinTwoUnit.getTilesValue() & valueToCheck) != 0)
+        if (unit != CoinTwoUnit && (CoinTwoUnit.GetTilesValue() & valueToCheck) != 0)
         {
             UnityEngine.Debug.Log("overlap coin two");
             return true;
         }
 
-        if (unit != PlayerOneUnit && (PlayerOneUnit.getTilesValue() & valueToCheck) != 0)
+        if (unit != PlayerOneUnit && (PlayerOneUnit.GetTilesValue() & valueToCheck) != 0)
         {
             UnityEngine.Debug.Log("overlap coin shape player one");
             return true;
         }
 
-        if (unit != PlayerTwoUnit && (PlayerTwoUnit.getTilesValue() & valueToCheck) != 0)
+        if (unit != PlayerTwoUnit && (PlayerTwoUnit.GetTilesValue() & valueToCheck) != 0)
         {
             UnityEngine.Debug.Log("overlap coin shape player two");
             return true;
@@ -114,22 +111,22 @@ public class UnitManager : Singleton<UnitManager>
         return false;
     }
 
-    public bool unitWouldOverflow(BaseUnit unit, int position)
+    public bool UnitWouldOverflow(BaseUnit unit, int position)
     {
         int valueToCheck = unit.GetAllowedSquares();
 
         return ((1 << position) & valueToCheck) == 0;
     }
 
-    public GamePosition getGamePosition()
+    public GamePosition GetGamePosition()
     {
         // Player two just finished playing, it has to be plugged in as p1
         if (GameManager.Instance.State == GameState.PlayerOneMoveShape)
         {
             return new GamePosition(
-                (CoinOneUnit.getTilesValue() | CoinTwoUnit.getTilesValue()),
-                PlayerTwoUnit.getTilesValue(),
-                PlayerOneUnit.getTilesValue()
+                (CoinOneUnit.GetTilesValue() | CoinTwoUnit.GetTilesValue()),
+                PlayerTwoUnit.GetTilesValue(),
+                PlayerOneUnit.GetTilesValue()
             );
         }
 
@@ -137,9 +134,9 @@ public class UnitManager : Singleton<UnitManager>
         if (GameManager.Instance.State == GameState.PlayerTwoMoveShape)
         {
             return new GamePosition(
-                (CoinOneUnit.getTilesValue() | CoinTwoUnit.getTilesValue()),
-                PlayerOneUnit.getTilesValue(),
-                PlayerTwoUnit.getTilesValue()
+                (CoinOneUnit.GetTilesValue() | CoinTwoUnit.GetTilesValue()),
+                PlayerOneUnit.GetTilesValue(),
+                PlayerTwoUnit.GetTilesValue()
             );
         }
 

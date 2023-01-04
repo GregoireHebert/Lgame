@@ -1,16 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToggleAudio : MonoBehaviour
 {
-    [SerializeField] private bool toggleEffects;
+    [SerializeField] private bool _toggleEffects;
+    private Toggle _toggle;
 
-    public void toggle()
+    void Start() {
+        _toggle = this.GetComponent<Toggle>();
+        Settings settings = SettingsManager.Instance.GetSettings();
+
+        UnityEngine.Debug.Log(_toggle.isOn);
+        _toggle.SetIsOnWithoutNotify(settings.SoundEffects);
+    }
+
+    public void Toggle()
     {
-        if (toggleEffects)
+        Settings settings = SettingsManager.Instance.GetSettings();
+
+        if (_toggleEffects)
         {
-            SoundManager.Instance.toggleEffects();
+            settings.SoundEffects = !settings.SoundEffects;
+            SoundManager.Instance.ToggleEffects(settings.SoundEffects);
+            
+            SettingsManager.Instance.UpdateSettings(settings);
         }
     }
 }

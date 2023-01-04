@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Quit : MonoBehaviour
 {
-    public void closeGame()
+    public void CloseGame()
     {
 #if UNITY_STANDALONE
         Application.Quit();

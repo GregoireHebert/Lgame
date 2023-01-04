@@ -6,13 +6,13 @@ public class Rotate : MonoBehaviour
     {
         if (GameManager.Instance.State == GameState.PlayerOneMoveShape)
         {
-            UnitManager.Instance.PlayerOneUnit.rotateRight();
+            UnitManager.Instance.PlayerOneUnit.RotateRight();
             return;
         }
 
         if (GameManager.Instance.State == GameState.PlayerTwoMoveShape)
         {
-            UnitManager.Instance.PlayerTwoUnit.rotateRight();
+            UnitManager.Instance.PlayerTwoUnit.RotateRight();
             return;
         }
     }
@@ -21,13 +21,13 @@ public class Rotate : MonoBehaviour
     {
         if (GameManager.Instance.State == GameState.PlayerOneMoveShape)
         {
-            UnitManager.Instance.PlayerOneUnit.rotateLeft();
+            UnitManager.Instance.PlayerOneUnit.RotateLeft();
             return;
         }
 
         if (GameManager.Instance.State == GameState.PlayerTwoMoveShape)
         {
-            UnitManager.Instance.PlayerTwoUnit.rotateLeft();
+            UnitManager.Instance.PlayerTwoUnit.RotateLeft();
             return;
         }
     }

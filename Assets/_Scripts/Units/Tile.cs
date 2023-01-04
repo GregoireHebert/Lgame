@@ -6,11 +6,10 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
-    [SerializeField] private AudioClip clip;
-
-    public BaseUnit OccupiedUnit;
-    public int value;
-    public int position;
+    [SerializeField] private AudioClip _clip;
+    [SerializeField] private BaseUnit _occupiedUnit;
+    public int Value;
+    public int Position;
 
     void OnMouseEnter()
     {
@@ -24,11 +23,11 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        tryMoveCoin();
-        tryMoveShape();
+        _tryMoveCoin();
+        _tryMoveShape();
     }
 
-    private void tryMoveCoin()
+    private void _tryMoveCoin()
     {
         // turn to move a coin
         if (GameState.PlayerOneMoveCoin != GameManager.Instance.State && GameState.PlayerTwoMoveCoin != GameManager.Instance.State)
@@ -37,20 +36,20 @@ public class Tile : MonoBehaviour
         }
 
         // clicked on a tile occupied by a coin, select it.
-        if (OccupiedUnit != null && OccupiedUnit.Side == Side.Neutral)
+        if (_occupiedUnit != null && _occupiedUnit.Side == Side.Neutral)
         {
-            UnitManager.Instance.SetSelectedUnit((BaseNeutral)OccupiedUnit);
+            UnitManager.Instance.SetSelectedUnit((BaseNeutral)_occupiedUnit);
             return;
         }
 
         if (
-            OccupiedUnit == null &&
+            _occupiedUnit == null &&
             UnitManager.Instance.SelectedUnit != null &&
-            false == UnitManager.Instance.unitWouldOverlap(UnitManager.Instance.SelectedUnit, position)
+            false == UnitManager.Instance.UnitWouldOverlap(UnitManager.Instance.SelectedUnit, Position)
         )
         {
             SetUnit(UnitManager.Instance.SelectedUnit);
-            SoundManager.Instance.playSound(clip);
+            SoundManager.Instance.PlaySound(_clip);
             UnitManager.Instance.SetSelectedUnit(null);
 
             // move to next game state
@@ -67,7 +66,7 @@ public class Tile : MonoBehaviour
         }
     }
 
-    private void tryMoveShape()
+    private void _tryMoveShape()
     {
         // turn to move a shape
         UnityEngine.Debug.Log(GameManager.Instance.State);
@@ -79,14 +78,14 @@ public class Tile : MonoBehaviour
 
         if (
             // clicked on an empty cell, or if clicked on selected unit tile allow it if the shape changed its position
-            (OccupiedUnit == null || (OccupiedUnit == UnitManager.Instance.SelectedUnit && UnitManager.Instance.SelectedUnit.getTilesValue() != UnitManager.Instance.SelectedUnit.calculateTilesValue(position))) &&
+            (_occupiedUnit == null || (_occupiedUnit == UnitManager.Instance.SelectedUnit && UnitManager.Instance.SelectedUnit.GetTilesValue() != UnitManager.Instance.SelectedUnit.CalculateTilesValue(Position))) &&
             // then check if the selected position and tile is compatible
-            false == UnitManager.Instance.unitWouldOverflow(UnitManager.Instance.SelectedUnit, position) &&
-            false == UnitManager.Instance.unitWouldOverlap(UnitManager.Instance.SelectedUnit, position)
+            false == UnitManager.Instance.UnitWouldOverflow(UnitManager.Instance.SelectedUnit, Position) &&
+            false == UnitManager.Instance.UnitWouldOverlap(UnitManager.Instance.SelectedUnit, Position)
         )
         {
             SetUnit(UnitManager.Instance.SelectedUnit);
-            SoundManager.Instance.playSound(clip);
+            SoundManager.Instance.PlaySound(_clip);
             UnitManager.Instance.SetSelectedUnit(null);
 
             // move to next game state
@@ -105,10 +104,10 @@ public class Tile : MonoBehaviour
 
     public void SetUnit(BaseUnit unit)
     {
-        if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;
+        if (unit.OccupiedTile != null) unit.OccupiedTile._occupiedUnit = null;
         unit.transform.position = new Vector3(transform.position.x, transform.position.y, (float)-0.1301);
-        unit.setTilesValue(position);
-        OccupiedUnit = unit;
+        unit.SetTilesValue(Position);
+        _occupiedUnit = unit;
         unit.OccupiedTile = this;
     }
 }

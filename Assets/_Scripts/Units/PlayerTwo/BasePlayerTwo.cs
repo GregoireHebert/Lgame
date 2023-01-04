@@ -6,6 +6,6 @@ public class BasePlayerTwo : BasePlayer
 {
     public BasePlayerTwo()
     {
-        rotation = Rotation.half;
+        Rotation = Rotation.Half;
     }
 }

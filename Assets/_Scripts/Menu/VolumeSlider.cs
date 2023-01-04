@@ -6,11 +6,22 @@ using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider _slider;
+    [SerializeField] private float _volume;
 
-    void Start()
+    public void Start()
     {
-        SoundManager.Instance.changeMasterVolume(slider.value);
-        slider.onValueChanged.AddListener(val => SoundManager.Instance.changeMasterVolume(val));
+        Settings settings = SettingsManager.Instance.GetSettings();
+        _slider.value = settings.Volume ;
+
+        SoundManager.Instance.ChangeMasterVolume(_slider.value);
+     
+        _slider.onValueChanged.AddListener(val => {
+            Settings settings = SettingsManager.Instance.GetSettings();
+            SoundManager.Instance.ChangeMasterVolume(val);
+            
+            settings.Volume = val;
+            SettingsManager.Instance.UpdateSettings(settings);
+        });
     }
 }

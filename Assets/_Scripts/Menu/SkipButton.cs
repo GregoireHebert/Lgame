@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Forward : MonoBehaviour
+public class SkipButton : MonoBehaviour
 {
-    public void forward()
+    public void Skip()
     {
         if (GameManager.Instance.State == GameState.PlayerOneMoveCoin)
         {

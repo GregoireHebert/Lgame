@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class SoundManager : SingletonPersistent<SoundManager>
 {
-    [SerializeField] private AudioSource DropPieceSource;
+    [SerializeField] private AudioSource _dropPieceSource;
 
-    public void playSound(AudioClip clip)
+    public void PlaySound(AudioClip clip)
     {
-        DropPieceSource.PlayOneShot(clip);
+        _dropPieceSource.PlayOneShot(clip);
     }
 
     // from 0 to 1;
-    public void changeMasterVolume(float value)
+    public void ChangeMasterVolume(float value)
     {
         AudioListener.volume = value;
     }
 
-    public void toggleEffects()
+    public void ToggleEffects(bool toggleEffects)
     {
-        DropPieceSource.mute = !DropPieceSource.mute;
+        _dropPieceSource.mute = !toggleEffects;
+    }
+
+    public bool IsSoundEffectsMuted()
+    {
+        return _dropPieceSource.mute;
     }
 }

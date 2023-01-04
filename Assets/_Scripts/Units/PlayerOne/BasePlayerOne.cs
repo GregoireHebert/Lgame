@@ -7,6 +7,6 @@ public class BasePlayerOne : BasePlayer
 {
     public BasePlayerOne()
     {
-        rotation = Rotation.zero;
+        Rotation = Rotation.Zero;
     }
 }

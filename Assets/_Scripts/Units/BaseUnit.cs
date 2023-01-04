@@ -7,23 +7,23 @@ public class BaseUnit : MonoBehaviour
 {
     public Tile OccupiedTile;
     public Side Side;
-    protected int tilesValue;
-    public Rotation rotation;
-    public bool mirror = false;
+    protected int TilesValue;
+    protected Rotation Rotation;
+    protected bool Mirror = false;
 
-    public int getTilesValue()
+    public int GetTilesValue()
     {
-        return tilesValue;
+        return TilesValue;
     }
 
-    public virtual int calculateTilesValue(int position)
+    public virtual int CalculateTilesValue(int position)
     {
         return 1 << position;
     }
 
-    public void setTilesValue(int position)
+    public void SetTilesValue(int position)
     {
-        tilesValue = calculateTilesValue(position);
+        TilesValue = CalculateTilesValue(position);
     }
 
     public virtual int GetAllowedSquares()
@@ -31,27 +31,27 @@ public class BaseUnit : MonoBehaviour
         return 0; // actually not needed here;
     }
 
-    public virtual void rotateRight()
+    public virtual void RotateRight()
     {
         // do nothing
     }
 
-    public virtual void rotateLeft()
+    public virtual void RotateLeft()
     {
         // do nothing
     }
 
-    public virtual void toggleMirror()
+    public virtual void ToggleMirror()
     {
-        mirror = !mirror;
+        Mirror = !Mirror;
     }
 }
 
 // A rotation represent a number of degrees to the right
 public enum Rotation
 {
-    zero = 0,
-    quarter = 90,
-    half = 180,
-    threeQuarter = 270,
+    Zero = 0,
+    Quarter = 90,
+    Half = 180,
+    ThreeQuarter = 270,
 }

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: a81ea9d5004cf4a9a9c6e8ad6ac7fd9f, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 43183497216
+    m_Localized: Nouvelle partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17116110512128
+    m_Localized: Langue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20693390450688
+    m_Localized: "R\xE9glages"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21009053769728
+    m_Localized: "R\xE8gles"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21072429703168
+    m_Localized: Fermer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28974594908160
+    m_Localized: "\xC0 chaque tour, un joueur doit d'abord d\xE9placer son pion L,
+      puis peut \xE9ventuellement d\xE9placer l'un des pions neutres. La partie est
+      gagn\xE9e en laissant l'adversaire incapable de d\xE9placer son pion L vers
+      une nouvelle position.\n\nLes pi\xE8ces ne peuvent pas chevaucher ou couvrir
+      d'autres pi\xE8ces. Lorsque la pi\xE8ce L est d\xE9plac\xE9e, elle est ramass\xE9e
+      et plac\xE9e sur des cases vides n'importe o\xF9 sur le plateau. Il peut \xEAtre
+      tourn\xE9 ou m\xEAme retourn\xE9 ; la seule r\xE8gle est qu'il doit finir dans
+      une position diff\xE9rente de celle qu'il a commenc\xE9e - couvrant ainsi au
+      moins une case qu'il ne couvrait pas auparavant. Pour d\xE9placer une pi\xE8ce
+      neutre, un joueur la prend et la place sur une case vide n'importe o\xF9 sur
+      le plateau. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 229265399341056
+    m_Localized: Effets sonores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 244839324049408
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
