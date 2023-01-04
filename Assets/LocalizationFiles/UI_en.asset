@@ -39,15 +39,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 28974594908160
-    m_Localized: "On each turn, a player must first move his L-pawn, and may then
+    m_Localized: 'On each turn, a player must first move his L-pawn, and may then
       move one of the neutral pawns. The game is won by leaving the opponent unable
-      to move his L-piece to a new position.\n\nPieces may not overlap or cover other
-      pieces. When the L-piece is moved, it is picked up and placed on empty squares
-      anywhere on the board. It can be turned or even flipped; the only rule is that
-      it must end up in a different position from the one it started in - thus covering
-      at least one square that it did not previously cover. To move a neutral piece,
-      a player takes it and places it on an empty square anywhere on the board. \n\nTranslated
-      with www.DeepL.com/Translator (free version)"
+      to move his L-piece to a new position.
+
+
+      Pieces may not overlap or cover
+      other pieces. When the L-piece is moved, it is picked up and placed on empty
+      squares anywhere on the board. It can be turned or even flipped; the only rule
+      is that it must end up in a different position from the one it started in -
+      thus covering at least one square that it did not previously cover. To move
+      a neutral piece, a player takes it and places it on an empty square anywhere
+      on the board. '
     m_Metadata:
       m_Items: []
   - m_Id: 229265399341056
