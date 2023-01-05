@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeScreen.unity
     guid: 744863c3031d041d8a32a41a9a6c49be
   - enabled: 1
-    path: Assets/Scenes/game.unity
+    path: Assets/Scenes/Game.unity
     guid: 4a4fed0b5983549b696242f8efbf4b9e
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: bd40e630daaa744fabbb751a48a3520e
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 611304eff25ac4bfa9b3dc0ccc944938, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 1ea66d0b7bc6e4ad7a6e9434fc96deee, type: 2}

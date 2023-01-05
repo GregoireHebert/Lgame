@@ -47,6 +47,18 @@ MonoBehaviour:
     m_Key: volume
     m_Metadata:
       m_Items: []
+  - m_Id: 718404414595072
+    m_Key: victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 718527605497856
+    m_Key: finish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723775770320896
+    m_Key: endGame_message
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

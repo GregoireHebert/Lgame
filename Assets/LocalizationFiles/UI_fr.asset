@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: fr
   m_SharedData: {fileID: 11400000, guid: a81ea9d5004cf4a9a9c6e8ad6ac7fd9f, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 2298970094573715459
   m_TableData:
   - m_Id: 43183497216
     m_Localized: Nouvelle partie
@@ -60,6 +61,23 @@ MonoBehaviour:
     m_Localized: Volume
     m_Metadata:
       m_Items: []
+  - m_Id: 718404414595072
+    m_Localized: Victoire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 718527605497856
+    m_Localized: Fin de partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 723775770320896
+    m_Localized: Le joueur {global.Winner} remporte la partie
+    m_Metadata:
+      m_Items:
+      - rid: 2298970094573715459
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2298970094573715459
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0af2d45920200

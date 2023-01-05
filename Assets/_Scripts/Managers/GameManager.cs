@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -6,11 +7,18 @@ public class GameManager : Singleton<GameManager>
 
     private EndGameChecker _endGameChecker;
 
+    [SerializeField] private Player _player;
+
     void Start()
     {
         _endGameChecker = new EndGameChecker();
 
         ChangeState(GameState.GenerateGrid);
+    }
+
+    public Player GetPlayer() 
+    {
+        return _player;
     }
 
     public void ChangeState(GameState newState)
@@ -33,9 +41,11 @@ public class GameManager : Singleton<GameManager>
                 UnityEngine.Debug.Log(_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()));
                 if (_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()))
                 {
-                    LevelManager.Instance.LoadScene("HomeScreen");
+                    ChangeState(GameState.GameEnded);
+                    break;
                 }
 
+                _player = Player.PlayerOne;
                 UnitManager.Instance.SelectPlayerOneUnit();
                 MenuManager.Instance.ToggleShapeButtons();
                 break;
@@ -47,9 +57,11 @@ public class GameManager : Singleton<GameManager>
                 UnityEngine.Debug.Log(_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()));
                 if (_endGameChecker.IsGameOver(UnitManager.Instance.GetGamePosition()))
                 {
-                    LevelManager.Instance.LoadScene("HomeScreen");
+                    ChangeState(GameState.GameEnded);
+                    break;
                 }
 
+                _player = Player.PlayerTwo;
                 UnitManager.Instance.SelectPlayerTwoUnit();
                 MenuManager.Instance.ToggleShapeButtons();
                 break;
@@ -58,6 +70,8 @@ public class GameManager : Singleton<GameManager>
                 MenuManager.Instance.ToggleForwardButton();
                 break;
             case GameState.GameEnded:
+                SaveSystem.SaveWinner(_player);
+                LevelManager.Instance.LoadScene("EndGame");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -75,6 +89,13 @@ public enum GameState
     PlayerTwoMoveShape = 4,
     PlayerTwoMoveCoin = 5,
     GameEnded = 6
+}
+
+public enum Player
+{
+    None = 0,
+    PlayerOne = 1,
+    PlayerTwo = 2,
 }
 
 [Serializable]
