@@ -4,9 +4,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public GameState State;
-
     private EndGameChecker _endGameChecker;
-
     [SerializeField] private Player _player;
 
     void Start()

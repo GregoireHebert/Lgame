@@ -1,15 +1,29 @@
+using System;
 using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseUnit : MonoBehaviour
+public class BaseUnit : MonoBehaviour, IEquatable<BaseUnit>
 {
     public Tile OccupiedTile;
     public Side Side;
     protected int TilesValue;
     protected Rotation Rotation;
     protected bool Mirror = false;
+#nullable enable
+    private Tutorial? _tutorial;
+#nullable disable  
+
+    void Start()
+    {
+        _tutorial = Tutorial.Instance ?? null;
+    }
+
+    public bool Equals(BaseUnit obj)
+    {
+        return TilesValue == obj.GetTilesValue();
+    }
 
     public int GetTilesValue()
     {
@@ -33,17 +47,23 @@ public class BaseUnit : MonoBehaviour
 
     public virtual void RotateRight()
     {
-        // do nothing
+        if (null != _tutorial) {
+            _tutorial.NextStep();
+        }
     }
 
     public virtual void RotateLeft()
     {
-        // do nothing
+       if (null != _tutorial) {
+            _tutorial.NextStep();
+        }
     }
 
     public virtual void ToggleMirror()
     {
-        Mirror = !Mirror;
+        if (null != _tutorial) {
+            _tutorial.NextStep();
+        }
     }
 }
 

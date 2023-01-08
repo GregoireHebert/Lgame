@@ -10,6 +10,14 @@ public class Tile : MonoBehaviour
     [SerializeField] private BaseUnit _occupiedUnit;
     public int Value;
     public int Position;
+#nullable enable
+    private Tutorial? _tutorial;
+#nullable disable    
+
+    void Start()
+    {
+        _tutorial = Tutorial.Instance ?? null;
+    }
 
     void OnMouseEnter()
     {
@@ -39,6 +47,11 @@ public class Tile : MonoBehaviour
         if (_occupiedUnit != null && _occupiedUnit.Side == Side.Neutral)
         {
             UnitManager.Instance.SetSelectedUnit((BaseNeutral)_occupiedUnit);
+
+            if (null != _tutorial) {
+                _tutorial.NextStep();
+            }
+            
             return;
         }
 
@@ -60,6 +73,10 @@ public class Tile : MonoBehaviour
             else
             {
                 GameManager.Instance.ChangeState(GameState.PlayerOneMoveShape);
+            }
+
+            if (null != _tutorial) {
+                _tutorial.NextStep();
             }
 
             return;
@@ -96,6 +113,10 @@ public class Tile : MonoBehaviour
             else
             {
                 GameManager.Instance.ChangeState(GameState.PlayerTwoMoveCoin);
+            }
+
+            if (null != _tutorial) {
+                _tutorial.NextStep();
             }
 
             return;

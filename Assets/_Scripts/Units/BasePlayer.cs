@@ -56,6 +56,7 @@ public class BasePlayer : BaseUnit
 
     public override void RotateRight()
     {
+        base.RotateRight();
         switch (Rotation)
         {
             case Rotation.Zero:
@@ -81,6 +82,7 @@ public class BasePlayer : BaseUnit
 
     public override void RotateLeft()
     {
+        base.RotateLeft();
         switch (Rotation)
         {
             case Rotation.Zero:
@@ -106,6 +108,7 @@ public class BasePlayer : BaseUnit
 
     public override void ToggleMirror()
     {
+        base.ToggleMirror();
         Mirror = !Mirror;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }

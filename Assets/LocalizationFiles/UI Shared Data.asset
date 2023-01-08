@@ -59,6 +59,10 @@ MonoBehaviour:
     m_Key: endGame_message
     m_Metadata:
       m_Items: []
+  - m_Id: 1826395872288768
+    m_Key: Tutorial
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
