@@ -20,7 +20,7 @@ MonoBehaviour:
     - rid: 2298970094573715459
   m_TableData:
   - m_Id: 43183497216
-    m_Localized: Nouvelle partie
+    m_Localized: Jouer (local)
     m_Metadata:
       m_Items: []
   - m_Id: 17116110512128
@@ -76,6 +76,42 @@ MonoBehaviour:
       - rid: 2298970094573715459
   - m_Id: 1826395872288768
     m_Localized: Tutoriel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3274623121612800
+    m_Localized: Jouer (en ligne)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3583364509458432
+    m_Localized: "Cr\xE9er un match"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3644156445450240
+    m_Localized: Aucun joueur disponible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3837768227610624
+    m_Localized: Votre nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3842379604811776
+    m_Localized: "Cr\xE9er"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3872407235321856
+    m_Localized: En attente d'un adversaire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3872897859837952
+    m_Localized: "Pr\xEAt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3877757317537792
+    m_Localized: Jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3904888848244736
+    m_Localized: "se pr\xE9pare..."
     m_Metadata:
       m_Items: []
   references:

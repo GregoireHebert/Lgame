@@ -63,6 +63,42 @@ MonoBehaviour:
     m_Key: Tutorial
     m_Metadata:
       m_Items: []
+  - m_Id: 3274623121612800
+    m_Key: new_game_online
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3583364509458432
+    m_Key: create_match
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3644156445450240
+    m_Key: no_lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3837768227610624
+    m_Key: your_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3842379604811776
+    m_Key: create
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3872407235321856
+    m_Key: waiting_players
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3872897859837952
+    m_Key: ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3877757317537792
+    m_Key: play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3904888848244736
+    m_Key: preparing
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

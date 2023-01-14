@@ -154,7 +154,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.CoopTilleuls.LGame
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -810,11 +811,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: e2063bd1-8aba-494c-b538-a44c544dc35d
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Lgame
+  organizationId: gheb
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

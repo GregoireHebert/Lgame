@@ -20,7 +20,7 @@ MonoBehaviour:
     - rid: 2298970094573715458
   m_TableData:
   - m_Id: 43183497216
-    m_Localized: New game
+    m_Localized: Play (local)
     m_Metadata:
       m_Items: []
   - m_Id: 17116110512128
@@ -77,6 +77,42 @@ MonoBehaviour:
       - rid: 2298970094573715458
   - m_Id: 1826395872288768
     m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3274623121612800
+    m_Localized: Play (online)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3583364509458432
+    m_Localized: Create a match
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3644156445450240
+    m_Localized: No player available
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3837768227610624
+    m_Localized: Your name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3842379604811776
+    m_Localized: Create
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3872407235321856
+    m_Localized: Waiting for opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3872897859837952
+    m_Localized: Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3877757317537792
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3904888848244736
+    m_Localized: preparing...
     m_Metadata:
       m_Items: []
   references:
