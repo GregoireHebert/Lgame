@@ -11,13 +11,14 @@ public class BaseUnit : MonoBehaviour, IEquatable<BaseUnit>
     protected int TilesValue;
     protected Rotation Rotation;
     protected bool Mirror = false;
-#nullable enable
-    private Tutorial? _tutorial;
-#nullable disable  
+    public bool Selected = false;
+    private bool _coroutineAllowed = true;
 
-    void Start()
+    public void Update()
     {
-        _tutorial = Tutorial.Instance ?? null;
+        if (_coroutineAllowed && Selected) {
+            StartCoroutine("StartPulsing");
+        }
     }
 
     public bool Equals(BaseUnit obj)
@@ -47,23 +48,42 @@ public class BaseUnit : MonoBehaviour, IEquatable<BaseUnit>
 
     public virtual void RotateRight()
     {
-        if (null != _tutorial) {
-            _tutorial.NextStep();
-        }
+        // DO NOTHING
     }
 
     public virtual void RotateLeft()
     {
-       if (null != _tutorial) {
-            _tutorial.NextStep();
-        }
+       // DO NOTHING
     }
 
     public virtual void ToggleMirror()
     {
-        if (null != _tutorial) {
-            _tutorial.NextStep();
+        // DO NOTHING
+    }
+
+    private IEnumerator StartPulsing()
+    {
+        _coroutineAllowed = false;
+
+        for (float i = 0f; i <= 2f; i += 0.1f) {
+            transform.localScale = new UnityEngine.Vector3(
+                (Mathf.Lerp(transform.localScale.x, transform.localScale.x + 0.001f, Mathf.SmoothStep(0f, 1f, i))),
+                (Mathf.Lerp(transform.localScale.y, transform.localScale.y + 0.001f, Mathf.SmoothStep(0f, 1f, i))),
+                (Mathf.Lerp(transform.localScale.z, transform.localScale.z + 0.001f, Mathf.SmoothStep(0f, 1f, i)))
+            );
+            yield return new WaitForSeconds(0.015f);
         }
+
+        for (float i = 0f; i <= 2f; i += 0.1f) {
+            transform.localScale = new UnityEngine.Vector3(
+                (Mathf.Lerp(transform.localScale.x, transform.localScale.x - 0.001f, Mathf.SmoothStep(0f, 1f, i))),
+                (Mathf.Lerp(transform.localScale.y, transform.localScale.y - 0.001f, Mathf.SmoothStep(0f, 1f, i))),
+                (Mathf.Lerp(transform.localScale.z, transform.localScale.z - 0.001f, Mathf.SmoothStep(0f, 1f, i)))
+            );
+            yield return new WaitForSeconds(0.015f);
+        }
+
+        _coroutineAllowed = true;
     }
 }
 

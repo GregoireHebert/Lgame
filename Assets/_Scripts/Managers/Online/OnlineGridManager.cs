@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class OnlineGridManager : MonoBehaviour
 {
     [SerializeField] private int _width = 4, _height = 4;
     [SerializeField] private Tile _lightTilePrefab;
     [SerializeField] private Tile _darkTilePrefab;
     [SerializeField] private Transform _cam;
-    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private OnlineGameManager _gameManager;
 
     private Dictionary<UnityEngine.Vector2, Tile> _tiles;
 

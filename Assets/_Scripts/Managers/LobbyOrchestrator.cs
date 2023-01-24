@@ -171,7 +171,7 @@ public class LobbyOrchestrator : NetworkBehaviour {
     
     private async void OnGameStart() {
         await MatchmakingService.LockLobby();
-        NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        NetworkManager.Singleton.SceneManager.LoadScene("OnlineGame", LoadSceneMode.Single);
     }
 
     #endregion

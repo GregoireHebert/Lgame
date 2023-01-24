@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using Unity.Netcode;
 
-public class GameManager : MonoBehaviour
+public class OnlineGameManager : NetworkBehaviour
 {
-    [SerializeField] private GameState _state;
-    [SerializeField] private GridManager _gridManager;
-    [SerializeField] private UnitManager _unitManager;
-    [SerializeField] private MenuManager _menuManager;
+    [SerializeField] private NetworkVariable<GameState> _state = new NetworkVariable<GameState>();
+    [SerializeField] private OnlineGridManager _gridManager;
+    [SerializeField] private OnlineUnitManager _unitManager;
+    [SerializeField] private OnlineMenuManager _menuManager;
     [SerializeField] private EndGameChecker _endGameChecker;
     [SerializeField] private Player _player;
 
@@ -25,12 +26,12 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(GameState newState)
     {
-        if (_state == newState)
+        if (_state.Value == newState)
         {
             return;
         }
 
-        _state = newState;
+        _state.Value = newState;
 
         switch (newState)
         {
@@ -44,13 +45,10 @@ public class GameManager : MonoBehaviour
                 _player = Player.PlayerOne;
                 _unitManager.SelectPlayerOneUnit();
                 _menuManager.ToggleShapeButtons();
-                if (Tutorial.Instance) Tutorial.Instance.NextStep();
-
                 break;
             case GameState.PlayerOneMoveCoin:
                 _unitManager.DeselectedUnit();
                 _menuManager.ToggleForwardButton();
-                if (Tutorial.Instance) Tutorial.Instance.NextStep();
                 break;
             case GameState.PlayerTwoMoveShape:
                 if (_endGameChecker.IsGameOver(_unitManager.GetGamePosition(GameState.PlayerTwoMoveShape)))
@@ -62,13 +60,10 @@ public class GameManager : MonoBehaviour
                 _player = Player.PlayerTwo;
                 _unitManager.SelectPlayerTwoUnit();
                 _menuManager.ToggleShapeButtons();
-                if (Tutorial.Instance) Tutorial.Instance.NextStep();
                 break;
             case GameState.PlayerTwoMoveCoin:
-
                 _unitManager.DeselectedUnit();
                 _menuManager.ToggleForwardButton();
-                if (Tutorial.Instance) Tutorial.Instance.NextStep();
                 break;
             case GameState.GameEnded:
                 SaveSystem.SaveWinner(_player);
@@ -76,7 +71,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
-        }  
+        }
     }
     
     public void TryMoveSelectedPiece(Tile tile)
@@ -88,7 +83,7 @@ public class GameManager : MonoBehaviour
     private void _tryMoveShape(Tile tile)
     {
         // turn to move a shape
-        if (GameState.PlayerOneMoveShape != _state && GameState.PlayerTwoMoveShape != _state)
+        if (GameState.PlayerOneMoveShape != _state.Value && GameState.PlayerTwoMoveShape != _state.Value)
         {
             return;
         }
@@ -105,7 +100,7 @@ public class GameManager : MonoBehaviour
             _unitManager.DeselectedUnit();
 
             // move to next game state
-            GameState nextState = _state == GameState.PlayerOneMoveShape ? GameState.PlayerOneMoveCoin : GameState.PlayerTwoMoveCoin;
+            GameState nextState = _state.Value == GameState.PlayerOneMoveShape ? GameState.PlayerOneMoveCoin : GameState.PlayerTwoMoveCoin;
             ChangeState(nextState);
         }
     }
@@ -113,7 +108,7 @@ public class GameManager : MonoBehaviour
     private void _tryMoveCoin(Tile tile)
     {
         // turn to move a coin
-        if (GameState.PlayerOneMoveCoin != _state && GameState.PlayerTwoMoveCoin != _state)
+        if (GameState.PlayerOneMoveCoin != _state.Value && GameState.PlayerTwoMoveCoin != _state.Value)
         {
             return;
         }
@@ -124,7 +119,6 @@ public class GameManager : MonoBehaviour
         if (occupiedUnit != null && occupiedUnit.Side == Side.Neutral)
         {
             _unitManager.SelectUnit((BaseNeutral)occupiedUnit);
-            if (Tutorial.Instance) Tutorial.Instance.NextStep();
             
             return;
         }
@@ -139,7 +133,7 @@ public class GameManager : MonoBehaviour
             _unitManager.DeselectedUnit();
 
             // move to next game state
-            GameState nextState = _state == GameState.PlayerOneMoveCoin ? GameState.PlayerTwoMoveShape : GameState.PlayerOneMoveShape;
+            GameState nextState = _state.Value == GameState.PlayerOneMoveCoin ? GameState.PlayerTwoMoveShape : GameState.PlayerOneMoveShape;
             ChangeState(nextState);
 
             return;
@@ -148,44 +142,16 @@ public class GameManager : MonoBehaviour
 
     public void SkipCoinMove()
     {
-        if (_state == GameState.PlayerOneMoveCoin)
+        if (_state.Value == GameState.PlayerOneMoveCoin)
         {
             ChangeState(GameState.PlayerTwoMoveShape);
             return;
         }
 
-        if (_state == GameState.PlayerTwoMoveCoin)
+        if (_state.Value == GameState.PlayerTwoMoveCoin)
         {
             ChangeState(GameState.PlayerOneMoveShape);
             return;
         }
     }
-}
-
-
-[Serializable]
-public enum GameState
-{
-    Init = -1,
-    GenerateGrid = 0,
-    SpawnPieces = 1,
-    PlayerOneMoveShape = 2,
-    PlayerOneMoveCoin = 3,
-    PlayerTwoMoveShape = 4,
-    PlayerTwoMoveCoin = 5,
-    GameEnded = 6
-}
-
-[Serializable]
-public enum Player
-{
-    None = 0,
-    PlayerOne = 1,
-    PlayerTwo = 2,
-}
-
-[Serializable]
-class InvalidStateException : Exception
-{
-    public InvalidStateException() : base("Invalid game state") { }
 }

@@ -10,7 +10,7 @@ public class Tutorial : Singleton<Tutorial>
     [SerializeField] private Canvas _GUI;
     [SerializeField] private Image _selectorPrefab;
     [SerializeField] private Image _currentSelector;
-    [SerializeField] private int _step = 0;
+    [SerializeField] private int _step = -1;
 
     private List<UnityEngine.Vector2> _steps;
 
@@ -34,18 +34,11 @@ public class Tutorial : Singleton<Tutorial>
     void Start()
     {
         _currentSelector = Instantiate(_selectorPrefab, new UnityEngine.Vector3(0, 0), UnityEngine.Quaternion.identity, _GUI.transform);
-        
-        RectTransform rectTransform = _currentSelector.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = _steps[_step];
     }
 
     public void NextStep() 
     {
-        _step++;
-
-        UnityEngine.Vector2 nextPosition = _steps.ElementAtOrDefault(_step);
-
-        UnityEngine.Debug.Log(nextPosition);
+        UnityEngine.Vector2 nextPosition = _steps.ElementAtOrDefault(++_step);
 
         if (nextPosition.x != 0 && nextPosition.y != 0) {
             RectTransform rectTransform = _currentSelector.GetComponent<RectTransform>();

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuManager : MonoBehaviour
+public class OnlineMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _forward;
     [SerializeField] private GameObject _rotateLeft;

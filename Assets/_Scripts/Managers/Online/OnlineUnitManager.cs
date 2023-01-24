@@ -6,9 +6,9 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class UnitManager : MonoBehaviour
+public class OnlineUnitManager : MonoBehaviour
 {
-    [SerializeField] private GridManager _gridManager;
+    [SerializeField] private OnlineGridManager _gridManager;
     private List<ScriptableUnit> _units;
     public BaseUnit SelectedUnit;
     public BasePlayerOne PlayerOneUnit;
@@ -170,19 +170,16 @@ public class UnitManager : MonoBehaviour
     public void MirrorSelectedUnit()
     {
         SelectedUnit?.ToggleMirror();
-        if (Tutorial.Instance) Tutorial.Instance.NextStep();
     }
 
     public void RotateSelectedUnitRight()
     {
         SelectedUnit?.RotateRight();
-        if (Tutorial.Instance) Tutorial.Instance.NextStep();
     }
 
     public void RotateSelectedUnitLeft()
     {
         SelectedUnit?.RotateLeft();
-        if (Tutorial.Instance) Tutorial.Instance.NextStep();
     }
 }
 

@@ -1,5 +1,5 @@
 using System;
- 
+
 namespace UnityEngine.Localization.Settings
 {
     /// <summary>
@@ -11,7 +11,7 @@ namespace UnityEngine.Localization.Settings
     {
         [SerializeField]
         string m_PlayerPreferenceKey = "selected-locale";
- 
+
         /// <summary>
         /// The Player Pref key to use.
         /// </summary>
@@ -20,7 +20,7 @@ namespace UnityEngine.Localization.Settings
             get => m_PlayerPreferenceKey;
             set => m_PlayerPreferenceKey = value;
         }
- 
+
         /// <summary>
         /// Registers a callback to <see cref="LocalizationSettings.SelectedLocaleChanged"/> in order to save changes made to the Locale.
         /// </summary>
@@ -35,7 +35,7 @@ namespace UnityEngine.Localization.Settings
                     PlayerPrefs.SetString(PlayerPreferenceKey, selectedLocale.Identifier.Code);
             }
         }
- 
+
         /// <summary>
         /// Returns the last locale set or null if no value has been recorded yet.
         /// </summary>
@@ -51,7 +51,7 @@ namespace UnityEngine.Localization.Settings
                     return availableLocales.GetLocale(code);
                 }
             }
- 
+
             // No locale could be found.
             return null;
         }

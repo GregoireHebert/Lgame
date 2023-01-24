@@ -333,7 +333,6 @@ GameObject:
   - component: {fileID: 98712003}
   - component: {fileID: 98712002}
   - component: {fileID: 98712001}
-  - component: {fileID: 98712004}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -406,9 +405,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 98712004}
-        m_TargetAssemblyTypeName: Rotate, Assembly-CSharp
-        m_MethodName: Right
+      - m_Target: {fileID: 1764628137}
+        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+        m_MethodName: RotateSelectedUnitRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -456,18 +455,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98711998}
   m_CullTransparentMesh: 1
---- !u!114 &98712004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98711998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c768f942cb2bc4be989bea92f3cbbfd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &360010352
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +556,6 @@ GameObject:
   - component: {fileID: 375857254}
   - component: {fileID: 375857253}
   - component: {fileID: 375857252}
-  - component: {fileID: 375857255}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -642,9 +628,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 375857255}
-        m_TargetAssemblyTypeName: SkipButton, Assembly-CSharp
-        m_MethodName: Skip
+      - m_Target: {fileID: 1797078929}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SkipCoinMove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -692,18 +678,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375857250}
   m_CullTransparentMesh: 1
---- !u!114 &375857255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375857250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b85ba8499007040ef98eff68419b41e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &390962177
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +871,6 @@ GameObject:
   - component: {fileID: 423173265}
   - component: {fileID: 423173264}
   - component: {fileID: 423173263}
-  - component: {fileID: 423173266}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -970,9 +943,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 423173266}
-        m_TargetAssemblyTypeName: Rotate, Assembly-CSharp
-        m_MethodName: Left
+      - m_Target: {fileID: 1764628137}
+        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+        m_MethodName: RotateSelectedUnitLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1020,18 +993,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423173260}
   m_CullTransparentMesh: 1
---- !u!114 &423173266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423173260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c768f942cb2bc4be989bea92f3cbbfd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &475929691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,7 +1361,6 @@ GameObject:
   - component: {fileID: 746377078}
   - component: {fileID: 746377077}
   - component: {fileID: 746377076}
-  - component: {fileID: 746377075}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1430,18 +1390,6 @@ RectTransform:
   m_AnchoredPosition: {x: -463, y: 122}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &746377075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746377073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da2c9b6f09dc463a92b61edd39a1ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &746377076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,9 +1434,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 746377075}
-        m_TargetAssemblyTypeName: Mirror, Assembly-CSharp
-        m_MethodName: ToggleMirror
+      - m_Target: {fileID: 1764628137}
+        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+        m_MethodName: MirrorSelectedUnit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1567,9 +1515,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 4
   _height: 4
-  _lightTilePrefab: {fileID: 9125302264296760235, guid: cccd3ff52785647b5b6307127fd51153, type: 3}
-  _darkTilePrefab: {fileID: 9125302264296760235, guid: ae4df063d80ca4cef9cc6fce3394edcf, type: 3}
+  _lightTilePrefab: {fileID: 369786226307266427, guid: cccd3ff52785647b5b6307127fd51153, type: 3}
+  _darkTilePrefab: {fileID: 3465456875280334992, guid: ae4df063d80ca4cef9cc6fce3394edcf, type: 3}
   _cam: {fileID: 1824861964}
+  _gameManager: {fileID: 1797078929}
 --- !u!4 &766041562
 Transform:
   m_ObjectHideFlags: 0
@@ -2585,11 +2534,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e33c8e8a37846328de0544b3c259c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gridManager: {fileID: 766041561}
   SelectedUnit: {fileID: 0}
-  PlayerOneUnit: {fileID: 0}
-  PlayerTwoUnit: {fileID: 0}
-  CoinOneUnit: {fileID: 0}
-  CoinTwoUnit: {fileID: 0}
+  PlayerOneUnit: {fileID: 1204555632791463667, guid: e3284df5552144c35a158197b292cf29, type: 3}
+  PlayerTwoUnit: {fileID: 1612412667700753148, guid: 1116f7f36cb1647849672d8ac9fa85d7, type: 3}
+  CoinOneUnit: {fileID: 981331663972732234, guid: 7cd3c80052793474497c55c2e708ed75, type: 3}
+  CoinTwoUnit: {fileID: 981331663972732234, guid: 7cd3c80052793474497c55c2e708ed75, type: 3}
 --- !u!4 &1764628138
 Transform:
   m_ObjectHideFlags: 0
@@ -2649,7 +2599,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f182e9978a6504e0b9db66bab98a9e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  State: -1
+  _state: 0
+  _gridManager: {fileID: 766041561}
+  _unitManager: {fileID: 1764628137}
+  _menuManager: {fileID: 1310168481}
   _player: 0
 --- !u!1 &1824861961
 GameObject:
