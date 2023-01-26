@@ -70,7 +70,6 @@ public class RoomScreen : MonoBehaviour
             }
             else {
                 var panel = Instantiate(_playerPanelPrefab, _playerPanelParent);
-                UnityEngine.Debug.Log(player);
                 panel.Init(player.Key);
                 _playerPanels.Add(panel);
             }

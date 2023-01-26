@@ -20,10 +20,6 @@ public class SettingsManager : SingletonPersistent<SettingsManager>
 
     public void Start()
     {
-        UnityEngine.Debug.Log(_settings.Language);
-        UnityEngine.Debug.Log(_settings.SoundEffects);
-        UnityEngine.Debug.Log(_settings.Volume);
-
         SoundManager.Instance.ToggleEffects(_settings.SoundEffects);
         SoundManager.Instance.ChangeMasterVolume(_settings.Volume);
     }

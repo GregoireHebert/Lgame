@@ -108,31 +108,11 @@ public class UnitManager : MonoBehaviour
     {
         int valueToCheck = unit.CalculateTilesValue(position);
 
-        if (unit != CoinOneUnit && (CoinOneUnit.GetTilesValue() & valueToCheck) != 0)
-        {
-            UnityEngine.Debug.Log("overlap coin one");
-            return true;
-        }
-
-        if (unit != CoinTwoUnit && (CoinTwoUnit.GetTilesValue() & valueToCheck) != 0)
-        {
-            UnityEngine.Debug.Log("overlap coin two");
-            return true;
-        }
-
-        if (unit != PlayerOneUnit && (PlayerOneUnit.GetTilesValue() & valueToCheck) != 0)
-        {
-            UnityEngine.Debug.Log("overlap coin shape player one");
-            return true;
-        }
-
-        if (unit != PlayerTwoUnit && (PlayerTwoUnit.GetTilesValue() & valueToCheck) != 0)
-        {
-            UnityEngine.Debug.Log("overlap coin shape player two");
-            return true;
-        }
-
-        return false;
+        return 
+            (unit != CoinOneUnit && (CoinOneUnit.GetTilesValue() & valueToCheck) != 0) ||
+            (unit != CoinTwoUnit && (CoinTwoUnit.GetTilesValue() & valueToCheck) != 0) ||
+            (unit != PlayerOneUnit && (PlayerOneUnit.GetTilesValue() & valueToCheck) != 0) ||
+            (unit != PlayerTwoUnit && (PlayerTwoUnit.GetTilesValue() & valueToCheck) != 0);
     }
 
     public bool UnitWouldOverflow(BaseUnit unit, int position)

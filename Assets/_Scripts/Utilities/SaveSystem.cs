@@ -37,7 +37,6 @@ public static class SaveSystem
             }
         }
 
-        UnityEngine.Debug.Log($"Save file not found in {path}");
         return new Settings() { Volume = (float)0.7, SoundEffects = true, Language = 0 };
     }
 

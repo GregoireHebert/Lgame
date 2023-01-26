@@ -2551,10 +2551,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridManager: {fileID: 766041563}
   SelectedUnit: {fileID: 0}
-  PlayerOneUnit: {fileID: 0}
-  PlayerTwoUnit: {fileID: 0}
-  CoinOneUnit: {fileID: 0}
-  CoinTwoUnit: {fileID: 0}
+  PlayerOneUnit: {fileID: 1204555632791463667, guid: e3284df5552144c35a158197b292cf29, type: 3}
+  PlayerTwoUnit: {fileID: 1612412667700753148, guid: 1116f7f36cb1647849672d8ac9fa85d7, type: 3}
+  CoinOneUnit: {fileID: 981331663972732234, guid: 7cd3c80052793474497c55c2e708ed75, type: 3}
+  CoinTwoUnit: {fileID: 981331663972732234, guid: 7cd3c80052793474497c55c2e708ed75, type: 3}
 --- !u!1 &1797078927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,7 +2621,8 @@ MonoBehaviour:
   _gridManager: {fileID: 766041563}
   _unitManager: {fileID: 1764628139}
   _menuManager: {fileID: 1310168483}
-  _player: 0
+  _player:
+    m_InternalValue: 0
 --- !u!1 &1824861961
 GameObject:
   m_ObjectHideFlags: 0

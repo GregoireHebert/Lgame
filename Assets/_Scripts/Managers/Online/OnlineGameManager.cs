@@ -9,10 +9,12 @@ public class OnlineGameManager : NetworkBehaviour
     [SerializeField] private OnlineUnitManager _unitManager;
     [SerializeField] private OnlineMenuManager _menuManager;
     [SerializeField] private EndGameChecker _endGameChecker;
-    [SerializeField] private Player _player;
-
+    [SerializeField] private NetworkVariable<Player> _player = new NetworkVariable<Player>();
+    
     public void Start()
     {
+        _state.OnValueChanged += OnStateChanged;
+
         _endGameChecker = new EndGameChecker();
         _gridManager.GenerateGrid();
         _unitManager.SpawnUnits();
@@ -21,7 +23,9 @@ public class OnlineGameManager : NetworkBehaviour
             tile.MouseDown.AddListener(TryMoveSelectedPiece);
         }
 
-        ChangeState(GameState.PlayerOneMoveShape);
+        if (!IsOwner) {
+            ChangeState(GameState.PlayerOneMoveShape);
+        }
     }
 
     public void ChangeState(GameState newState)
@@ -31,8 +35,17 @@ public class OnlineGameManager : NetworkBehaviour
             return;
         }
 
-        _state.Value = newState;
+        ChangeStateServerRpc(newState);
+    }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void ChangeStateServerRpc(GameState newState)
+    {
+        _state.Value = newState;
+    }
+
+    public void OnStateChanged(GameState oldState, GameState newState) 
+    {
         switch (newState)
         {
             case GameState.PlayerOneMoveShape:
@@ -42,7 +55,7 @@ public class OnlineGameManager : NetworkBehaviour
                     break;
                 }
 
-                _player = Player.PlayerOne;
+                _player.Value = Player.PlayerOne;
                 _unitManager.SelectPlayerOneUnit();
                 _menuManager.ToggleShapeButtons();
                 break;
@@ -57,7 +70,7 @@ public class OnlineGameManager : NetworkBehaviour
                     break;
                 }
 
-                _player = Player.PlayerTwo;
+                _player.Value = Player.PlayerTwo;
                 _unitManager.SelectPlayerTwoUnit();
                 _menuManager.ToggleShapeButtons();
                 break;
@@ -66,7 +79,7 @@ public class OnlineGameManager : NetworkBehaviour
                 _menuManager.ToggleForwardButton();
                 break;
             case GameState.GameEnded:
-                SaveSystem.SaveWinner(_player);
+                SaveSystem.SaveWinner(_player.Value);
                 LevelManager.Instance.LoadScene("EndGame");
                 break;
             default:
