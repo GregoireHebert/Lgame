@@ -10,12 +10,12 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform _cam;
     [SerializeField] private GameManager _gameManager;
 
-    private Dictionary<UnityEngine.Vector2, Tile> _tiles;
+    private Dictionary<int, Tile> _tiles;
 
     public void GenerateGrid()
     {
         int square = 0;
-        _tiles = new Dictionary<UnityEngine.Vector2, Tile>();
+        _tiles = new Dictionary<int, Tile>();
 
         for (int y = _height; y > 0; y--)
         {
@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
                 spawnedTile.Value = 1 << square;
                 spawnedTile.Position = square;
 
-                _tiles[new UnityEngine.Vector2(x, y)] = spawnedTile;
+                _tiles[square] = spawnedTile;
                 
                 square++;
             }
@@ -38,12 +38,12 @@ public class GridManager : MonoBehaviour
         _cam.transform.position = new UnityEngine.Vector3((float)_width / 2 - 0.5f, (float)_width / 2 + 0.5f, -10);
     }
 
-    public Dictionary<UnityEngine.Vector2, Tile> GetTiles()
+    public Dictionary<int, Tile> GetTiles()
     {
         return _tiles;
     }
 
-    public Tile GetTileAtPosition(UnityEngine.Vector2 position)
+    public Tile GetTileAtPosition(int position)
     {
         if (_tiles.TryGetValue(position, out var tile))
         {

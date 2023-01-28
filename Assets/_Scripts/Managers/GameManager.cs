@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         if (
             // clicked on an empty cell, or if clicked on selected unit tile allow it if the shape changed its position
-            (tile.getOccupiedUnit() == null || (tile.getOccupiedUnit() == _unitManager.SelectedUnit && _unitManager.SelectedUnit.GetTilesValue() != _unitManager.SelectedUnit.CalculateTilesValue(tile.Position))) &&
+            (tile.OccupiedUnit == null || (tile.OccupiedUnit == _unitManager.SelectedUnit && _unitManager.SelectedUnit.GetTilesValue() != _unitManager.SelectedUnit.CalculateTilesValue(tile.Position))) &&
             // then check if the selected position and tile is compatible
             false == _unitManager.UnitWouldOverflow(_unitManager.SelectedUnit, tile.Position) &&
             false == _unitManager.UnitWouldOverlap(_unitManager.SelectedUnit, tile.Position)
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        BaseUnit occupiedUnit = tile.getOccupiedUnit();
+        BaseUnit occupiedUnit = tile.OccupiedUnit;
 
         // clicked on a tile occupied by a coin, select it.
         if (occupiedUnit != null && occupiedUnit.Side == Side.Neutral)
