@@ -109,22 +109,76 @@ public class OnlineGameManager : NetworkBehaviour
             false == _unitManager.UnitWouldOverlap(_unitManager.SelectedUnit, tile.Position)
         )
         {
-            moveShapeClientRpc(tile.Position);
-            //tile.SetUnit(_unitManager.SelectedUnit);
-            //_unitManager.DeselectedUnit();
+            moveShapeServerRpc(tile.Position);
 
             // move to next game state
             GameState nextState = _state.Value == GameState.PlayerOneMoveShape ? GameState.PlayerOneMoveCoin : GameState.PlayerTwoMoveCoin;
             ChangeState(nextState);
         }
     }
+    
+    [ServerRpc(RequireOwnership = false)]
+    private void moveShapeServerRpc(int position) 
+    {
+        moveShapeClientRpc(position);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void MirrorSelectedUnitServerRpc()
+    {
+        MirrorSelectedUnitClientRpc();
+    }
+    
+    [ServerRpc(RequireOwnership = false)]
+    public void RotateSelectedUnitRightServerRpc()
+    {
+        RotateSelectedUnitRightClientRpc();
+    }
+    
+    [ServerRpc(RequireOwnership = false)]
+    public void RotateSelectedUnitLeftServerRpc()
+    {
+        RotateSelectedUnitLeftClientRpc();
+    }
 
     [ClientRpc]
     private void moveShapeClientRpc(int position) 
     {
         Tile tile = _gridManager.GetTileAtPosition(position);
+
         tile.SetUnit(_unitManager.SelectedUnit);
         _unitManager.DeselectedUnit();
+    }
+    
+    [ClientRpc]
+    public void MirrorSelectedUnitClientRpc()
+    {
+        _unitManager.MirrorSelectedUnit();
+    }
+    
+    [ClientRpc]
+    public void RotateSelectedUnitRightClientRpc()
+    {
+        _unitManager.RotateSelectedUnitRight();
+    }
+    
+    [ClientRpc]
+    public void RotateSelectedUnitLeftClientRpc()
+    {
+        _unitManager.RotateSelectedUnitLeft();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SelectUnitAtPositionServerRpc(int position)
+    {
+        SelectUnitAtPositionClientRpc(position);
+    }
+
+    [ClientRpc]
+    public void SelectUnitAtPositionClientRpc(int position)
+    {
+        Tile tile = _gridManager.GetTileAtPosition(position);
+        _unitManager.SelectUnit((BaseNeutral)tile.OccupiedUnit);
     }
 
     private void _tryMoveCoin(Tile tile)
@@ -140,7 +194,7 @@ public class OnlineGameManager : NetworkBehaviour
         // clicked on a tile occupied by a coin, select it.
         if (occupiedUnit != null && occupiedUnit.Side == Side.Neutral)
         {
-            _unitManager.SelectUnit((BaseNeutral)occupiedUnit);
+            SelectUnitAtPositionServerRpc(tile.Position);
             
             return;
         }
@@ -151,8 +205,7 @@ public class OnlineGameManager : NetworkBehaviour
             false == _unitManager.UnitWouldOverlap(_unitManager.SelectedUnit, tile.Position)
         )
         {
-            tile.SetUnit(_unitManager.SelectedUnit);
-            _unitManager.DeselectedUnit();
+            moveShapeServerRpc(tile.Position);
 
             // move to next game state
             GameState nextState = _state.Value == GameState.PlayerOneMoveCoin ? GameState.PlayerTwoMoveShape : GameState.PlayerOneMoveShape;

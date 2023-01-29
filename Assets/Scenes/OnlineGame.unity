@@ -405,9 +405,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1764628139}
-        m_TargetAssemblyTypeName: OnlineUnitManager, Assembly-CSharp
-        m_MethodName: RotateSelectedUnitRight
+      - m_Target: {fileID: 1797078931}
+        m_TargetAssemblyTypeName: OnlineGameManager, Assembly-CSharp
+        m_MethodName: RotateSelectedUnitRightServerRpc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -943,9 +943,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1764628139}
-        m_TargetAssemblyTypeName: OnlineUnitManager, Assembly-CSharp
-        m_MethodName: RotateSelectedUnitLeft
+      - m_Target: {fileID: 1797078931}
+        m_TargetAssemblyTypeName: OnlineGameManager, Assembly-CSharp
+        m_MethodName: RotateSelectedUnitLeftServerRpc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1434,9 +1434,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1764628139}
-        m_TargetAssemblyTypeName: OnlineUnitManager, Assembly-CSharp
-        m_MethodName: MirrorSelectedUnit
+      - m_Target: {fileID: 1797078931}
+        m_TargetAssemblyTypeName: OnlineGameManager, Assembly-CSharp
+        m_MethodName: MirrorSelectedUnitServerRpc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
