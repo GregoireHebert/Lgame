@@ -37,7 +37,7 @@ public static class SaveSystem
             }
         }
 
-        return new Settings() { Volume = (float)0.7, SoundEffects = true, Language = 0 };
+        return new Settings() { Volume = (float)0.7, SoundEffects = true, Language = 0, Username = Settings.createName() };
     }
 
     public static void SaveWinner(Player player)

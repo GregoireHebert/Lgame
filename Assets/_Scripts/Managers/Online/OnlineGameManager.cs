@@ -10,7 +10,7 @@ public class OnlineGameManager : NetworkBehaviour
     [SerializeField] private OnlineMenuManager _menuManager;
     [SerializeField] private EndGameChecker _endGameChecker;
     [SerializeField] private NetworkVariable<Player> _player = new NetworkVariable<Player>();
-    
+
     public void Start()
     {
         _state.OnValueChanged += OnStateChanged;
@@ -25,6 +25,14 @@ public class OnlineGameManager : NetworkBehaviour
 
         if (!IsOwner) {
             ChangeState(GameState.PlayerOneMoveShape);
+        }
+    }
+
+    private void Update()
+    {
+        if (NetworkManager.Singleton.ShutdownInProgress)
+        {
+            LevelManager.Instance.LoadScene("EndGame");
         }
     }
 

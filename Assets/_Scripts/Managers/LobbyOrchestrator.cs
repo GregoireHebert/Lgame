@@ -166,7 +166,6 @@ public class LobbyOrchestrator : NetworkBehaviour {
         if (NetworkManager.Singleton != null) {
             NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnectCallback;
         }
-      
     }
     
     private async void OnGameStart() {

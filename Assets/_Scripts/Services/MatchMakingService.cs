@@ -35,8 +35,7 @@ public static class MatchmakingService
         _currentLobby = null;
     }
 
-    // Obviously you'd want to add customization to the query, but this
-    // will suffice for this simple demo
+    // Obviously you'd want to add customization to the query, but this will suffice for now
     public static async Task<List<Lobby>> GatherLobbies() {
         var options = new QueryLobbiesOptions {
             Count = 15,

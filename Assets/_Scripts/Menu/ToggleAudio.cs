@@ -12,7 +12,6 @@ public class ToggleAudio : MonoBehaviour
         _toggle = this.GetComponent<Toggle>();
         Settings settings = SettingsManager.Instance.GetSettings();
 
-        UnityEngine.Debug.Log(_toggle.isOn);
         _toggle.SetIsOnWithoutNotify(settings.SoundEffects);
     }
 
